@@ -1,131 +1,349 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Login & Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Đăng Nhập</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap');
+
+        /* Reset và cài đặt cơ bản */
         * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-          background: #f0f2f5;
-          display: flex;
-          height: 100vh;
-          justify-content: center;
-          align-items: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: #e6e8eb;
+            display: flex;
+            flex-direction: column; /* Thay đổi để footer nằm bên dưới */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #4a4a4a;
         }
 
-        .container {
-          background: white;
-          padding: 30px;
-          border-radius: 10px;
-          box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
-          width: 360px;
+        /* Container chính của Login */
+        .login-container {
+            display: flex;
+            width: 900px;
+            max-width: 95vw;
+            height: 600px;
+            background-color: #fff;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 2rem; /* Thêm khoảng cách với top */
         }
 
-        .form-box h1 {
-          text-align: center;
-          margin-bottom: 25px;
-          color: #333;
+        /* Phần form bên trái */
+        .login-form {
+            flex: 1;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .input-group {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
+        .login-form h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 5px;
         }
 
-        .input-field input {
-          width: 100%;
-          padding: 12px;
-          border: 1px solid #ccc;
-          border-radius: 6px;
-          font-size: 15px;
+        .login-form .subtitle {
+            text-align: center;
+            font-size: 13px;
+            color: #aaa;
+            letter-spacing: 0.5px;
+            margin-bottom: 30px;
         }
 
-        .input-group p {
-          font-size: 13px;
-          text-align: right;
-          margin-top: 5px;
+        .google-login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 12px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
 
-        .input-group a {
-          color: #1877f2;
-          text-decoration: none;
+        .google-login-btn:hover {
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
-        .btn-field {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 20px;
+        .google-login-btn svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
         }
 
-        .btn-field button {
-          flex: 1;
-          padding: 12px;
-          margin: 0 5px;
-          border: none;
-          background-color: #1877f2;
-          color: white;
-          font-size: 16px;
-          border-radius: 6px;
-          cursor: pointer;
-          transition: background 0.3s ease;
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #ccc;
+            margin: 30px 0;
+            font-size: 13px;
         }
 
-        .btn-field button:hover {
-          background-color: #145db2;
+        .separator::before, .separator::after {
+            content: ''; flex: 1; border-bottom: 1px solid #eee;
         }
+        .separator:not(:empty)::before { margin-right: .5em; }
+        .separator:not(:empty)::after { margin-left: .5em; }
+
+        .main-form { display: flex; flex-direction: column; gap: 15px; }
+        .main-form input {
+            width: 100%; padding: 12px 15px; border: 1px solid #ddd;
+            border-radius: 5px; font-size: 14px; font-family: 'Poppins', sans-serif;
+        }
+        .main-form input::placeholder { color: #aaa; }
+        .main-form input:focus { outline: none; border-color: #333; }
+        .form-options {
+            display: flex; justify-content: space-between;
+            align-items: center; font-size: 13px;
+        }
+        .form-options .remember-me { display: flex; align-items: center; gap: 5px; color: #666; }
+        .form-options #remember-me { width: 14px; height: 14px; }
+        .form-options .forgot-password { color: #333; text-decoration: none; font-weight: 500; }
+        .form-options .forgot-password:hover { text-decoration: underline; }
+        .login-btn {
+            width: 100%; padding: 14px; background-color: #1e293b; color: #fff;
+            border: none; border-radius: 5px; font-size: 15px; font-weight: 500;
+            cursor: pointer; margin-top: 10px; transition: background-color 0.3s;
+        }
+        .login-btn:hover { background-color: #334155; }
+        .signup-link {
+            text-align: center; margin-top: 25px;
+            font-size: 13px; color: #666;
+        }
+        .signup-link a { color: #333; text-decoration: none; font-weight: 500; }
+        .signup-link a:hover { text-decoration: underline; }
+
+        /* Phần hình ảnh bên phải */
+        .login-image {
+            flex: 1;
+            background: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1920&auto=format&fit=crop') center center/cover;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .image-text {
+            font-family: 'Playfair Display', serif; font-size: 100px;
+            font-weight: 700; color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px; text-transform: uppercase; letter-spacing: 5px;
+        }
+
+        /* ----- CSS CHO FOOTER MỚI ----- */
+        .footer {
+            width: 100%;
+            background-color: #111111;
+            padding: 70px 0 40px;
+            color: #b7b7b7;
+            margin-top: 2rem;
+            font-size: 14px;
+        }
+        .footer .container {
+            width: 100%;
+            max-width: 1170px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .footer .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+        .footer [class*="col-"] {
+            padding: 0 15px;
+        }
+        /* Chiều rộng các cột footer */
+        .footer .col-lg-2 { width: 16.66667%; }
+        .footer .col-lg-3 { width: 25%; }
+        .footer .col-lg-12 { width: 100%; }
+        .footer .offset-lg-1 { margin-left: 8.33333%; }
+
+        .footer__about p { margin: 20px 0; line-height: 1.6; }
+        .footer__logo { margin-bottom: 20px; }
+        .footer__logo a, .footer__about a { display: inline-block; }
+
+        .footer__widget { margin-bottom: 20px; }
+        .footer__widget h6 {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .footer__widget ul { list-style: none; }
+        .footer__widget ul li { line-height: 36px; }
+        .footer__widget ul li a { color: #b7b7b7; text-decoration: none; }
+        .footer__widget ul li a:hover { color: #fff; }
+
+        .footer__newslatter p { margin-bottom: 20px; }
+        .footer__newslatter form {
+            display: flex;
+            width: 100%;
+            border-radius: 50px;
+            background: #222;
+            overflow: hidden;
+        }
+        .footer__newslatter form input {
+            width: 100%; background: transparent; border: none;
+            padding: 10px 20px; color: #fff;
+        }
+        .footer__newslatter form input:focus { outline: none; }
+        .footer__newslatter form button {
+            background-color: #e53637; color: white; border: none;
+            padding: 0 20px; cursor: pointer;
+        }
+        .icon_mail_alt::before { /* Thay thế icon bằng ký tự */
+            content: "";
+            font-family: FontAwesome;
+        }
+
+        .footer__copyright__text {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        .footer__copyright__text p { margin: 0; }
+        .footer__copyright__text a { color: #e53637; text-decoration: none; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer [class*="col-"] { width: 50%; margin-bottom: 30px; }
+            .footer .offset-lg-1 { margin-left: 0; }
+        }
+        @media (max-width: 800px) {
+            .login-image { display: none; }
+            .login-form { padding: 40px 30px; }
+        }
+         @media (max-width: 576px) {
+            .footer [class*="col-"] { width: 100%; }
+        }
+
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="form-box">
-        <h1 id="title">Login</h1>
-        <form id="form">
-            <div class="input-group">
-                <div class="input-field" id="nameField" style="display: none;">
-                    <input type="text" placeholder="Name">
-                </div>
-                <div class="input-field">
-                    <input type="email" placeholder="Email" required>
-                </div>
-                <div class="input-field">
-                    <input type="password" placeholder="Password" required>
-                </div>
-                <p>Lost password? <a href="#">Click here!</a></p>
+
+<div class="login-container">
+    <div class="login-form">
+        <h1>YOUR WELCOME!</h1>
+        <p class="subtitle">Timelessly chic and enduringly fashionable.</p>
+        <button class="google-login-btn">
+            <svg viewBox="0 0 48 48">
+                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.42-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6.04C45.33 39.73 48 32.74 48 24c0-.66-.05-1.31-.15-1.95l.13.4z"></path>
+                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.82l-7.73-6.04c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                <path fill="none" d="M0 0h48v48H0z"></path>
+            </svg>
+            Log in with Google
+        </button>
+        <div class="separator">or</div>
+        <form id="loginForm" class="main-form">
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <div class="form-options">
+                <label for="remember-me" class="remember-me">
+                    <input type="checkbox" id="remember-me"> Remember me
+                </label>
+                <a href="#" class="forgot-password">Forgot Password</a>
             </div>
-            <div class="btn-field">
-                <button type="submit" id="signinBtn">Login</button>
-                <button type="button" id="signupBtn">Register</button>
-            </div>
+            <button type="submit" class="login-btn">Log in</button>
         </form>
+        <p class="signup-link">
+            Don't have an account? <a href="#">Sign up for free</a>
+        </p>
+    </div>
+    <div class="login-image">
+        <span class="image-text">FASHION</span>
     </div>
 </div>
 
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <a href="#"><img src="https://placehold.co/150x30/ffffff/111111?text=LOGO" alt="Logo"></a>
+                    </div>
+                    <p>The customer is at the heart of our unique business model, which includes design.</p>
+                    <a href="#"><img src="https://placehold.co/220x30/111111/ffffff?text=Payment+Methods" alt="Payment Methods"></a>
+                </div>
+            </div>
+            <div class="col-lg-2 offset-lg-1">
+                <div class="footer__widget">
+                    <h6>Shopping</h6>
+                    <ul>
+                        <li><a href="#">Clothing Store</a></li>
+                        <li><a href="#">Trending Shoes</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="footer__widget">
+                    <h6>Shopping</h6>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Payment Methods</a></li>
+                        <li><a href="#">Delivery</a></li>
+                        <li><a href="#">Return & Exchanges</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 offset-lg-1">
+                <div class="footer__widget">
+                    <h6>NewLetter</h6>
+                    <div class="footer__newslatter">
+                        <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                        <form action="#">
+                            <input type="text" placeholder="Your email">
+                            <button type="submit"><span class="icon_mail_alt"></span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="footer__copyright__text">
+                    <p>Copyright © 2025 All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
 <script>
-    const signupBtn = document.getElementById("signupBtn");
-    const signinBtn = document.getElementById("signinBtn");
-    const nameField = document.getElementById("nameField");
-    const title = document.getElementById("title");
-
-    signupBtn.onclick = function () {
-      nameField.style.display = "block";
-      title.innerText = "Register";
-      signinBtn.type = "button";
-      signupBtn.type = "submit";
-    };
-
-    signinBtn.onclick = function () {
-      nameField.style.display = "none";
-      title.innerText = "Login";
-      signinBtn.type = "submit";
-      signupBtn.type = "button";
-    };
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Đăng nhập thành công! (demo)');
+    });
 </script>
 </body>
 </html>

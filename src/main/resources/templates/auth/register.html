@@ -1,143 +1,305 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Đăng Ký</title>
     <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap');
+
+        /* Reset và cài đặt cơ bản */
         * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-          background: #f0f2f5;
-          display: flex;
-          height: 100vh;
-          justify-content: center;
-          align-items: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: #e6e8eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #4a4a4a;
         }
 
-        .container {
-          background: white;
-          padding: 30px;
-          border-radius: 10px;
-          box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
-          width: 400px;
+        /* Container chính */
+        .register-container {
+            display: flex;
+            width: 900px;
+            max-width: 95vw;
+            min-height: 650px; /* Tăng chiều cao để vừa các trường mới */
+            background-color: #fff;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        h1 {
-          text-align: center;
-          margin-bottom: 25px;
-          color: #333;
+        /* Phần form bên trái */
+        .register-form {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .input-group {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
+        .register-form h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 5px;
         }
 
-        .input-field input {
-          width: 100%;
-          padding: 12px;
-          border: 1px solid #ccc;
-          border-radius: 6px;
-          font-size: 15px;
+        .register-form .subtitle {
+            text-align: center;
+            font-size: 13px;
+            color: #aaa;
+            letter-spacing: 0.5px;
+            margin-bottom: 25px;
         }
 
-        .btn-register {
-          width: 100%;
-          padding: 12px;
-          margin-top: 20px;
-          border: none;
-          background-color: #28a745;
-          color: white;
-          font-size: 16px;
-          border-radius: 6px;
-          cursor: pointer;
-          transition: background 0.3s ease;
+        /* Nút đăng ký với Google */
+        .google-register-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 12px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
 
-        .btn-register:hover {
-          background-color: #218838;
+        .google-register-btn:hover {
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
+        .google-register-btn svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        /* Dấu ngăn cách "or" */
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #ccc;
+            margin: 25px 0;
+            font-size: 13px;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #eee;
+        }
+
+        .separator:not(:empty)::before {
+            margin-right: .5em;
+        }
+
+        .separator:not(:empty)::after {
+            margin-left: .5em;
+        }
+
+        /* Form và các trường input */
+        .main-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .main-form input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .main-form input::placeholder {
+            color: #aaa;
+        }
+
+        .main-form input:focus {
+            outline: none;
+            border-color: #333;
+        }
+
+        /* Điều khoản dịch vụ */
+        .terms-agreement {
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .terms-agreement input[type="checkbox"] {
+            width: 14px;
+            height: 14px;
+        }
+
+        .terms-agreement a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .terms-agreement a:hover {
+            text-decoration: underline;
+        }
+
+        /* Nút đăng ký chính */
+        .register-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #1e293b;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+        .register-btn:hover {
+            background-color: #334155;
+        }
+
+        /* Link đăng nhập */
         .login-link {
-          text-align: center;
-          margin-top: 15px;
-          font-size: 14px;
+            text-align: center;
+            margin-top: 25px;
+            font-size: 13px;
+            color: #666;
         }
 
         .login-link a {
-          color: #1877f2;
-          text-decoration: none;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
         }
 
-        .error {
-          color: red;
-          font-size: 13px;
-          display: none;
+        .login-link a:hover {
+            text-decoration: underline;
         }
 
-        .success {
-          color: green;
-          font-size: 13px;
-          display: none;
+        /* Phần hình ảnh bên phải */
+        .register-image {
+            flex: 1;
+            background: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1920&auto=format&fit=crop') center center/cover;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
         }
+
+        .image-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 100px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .register-image {
+                display: none;
+            }
+            .register-form {
+                padding: 40px 30px;
+            }
+            .register-container {
+                min-height: auto;
+            }
+        }
+
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>Register</h1>
-    <form id="registerForm">
-        <div class="input-group">
-            <div class="input-field">
-                <input type="text" id="name" placeholder="Full Name" required>
-            </div>
-            <div class="input-field">
-                <input type="email" id="email" placeholder="Email" required>
-            </div>
-            <div class="input-field">
-                <input type="password" id="password" placeholder="Password" required>
-            </div>
-            <div class="input-field">
-                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
-            </div>
-            <div id="message" class="error">Passwords do not match!</div>
-            <div id="successMessage" class="success">Registration successful!</div>
-        </div>
-        <button type="submit" class="btn-register">Register</button>
-        <div class="login-link">
-            Already have an account? <a href="#">Login here</a>
-        </div>
-    </form>
+
+<div class="register-container">
+    <div class="register-form">
+        <h1>Create An Account</h1>
+        <p class="subtitle">Join us and discover the latest trends.</p>
+
+        <button class="google-register-btn">
+            <svg viewBox="0 0 48 48">
+                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.42-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6.04C45.33 39.73 48 32.74 48 24c0-.66-.05-1.31-.15-1.95l.13.4z"></path>
+                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.82l-7.73-6.04c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                <path fill="none" d="M0 0h48v48H0z"></path>
+            </svg>
+            Sign up with Google
+        </button>
+
+        <div class="separator">or</div>
+
+        <form id="registerForm" class="main-form">
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+            <label for="terms" class="terms-agreement">
+                <input type="checkbox" id="terms" required>
+                I agree to the <a href="#">Terms & Conditions</a>
+            </label>
+
+            <button type="submit" class="register-btn">Sign Up</button>
+        </form>
+
+        <p class="login-link">
+            Already have an account? <a href="#">Log in</a>
+        </p>
+    </div>
+
+    <div class="register-image">
+        <span class="image-text">FASHION</span>
+    </div>
 </div>
 
 <script>
-    const form = document.getElementById("registerForm");
-    const password = document.getElementById("password");
-    const confirmPassword = document.getElementById("confirmPassword");
-    const errorMessage = document.getElementById("message");
-    const successMessage = document.getElementById("successMessage");
+    const registerForm = document.getElementById('registerForm');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault(); // Ngăn gửi form
+    registerForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Ngăn form gửi đi mặc định
 
-      if (password.value !== confirmPassword.value) {
-        errorMessage.style.display = "block";
-        successMessage.style.display = "none";
-      } else {
-        errorMessage.style.display = "none";
-        successMessage.style.display = "block";
+        if (password.value !== confirmPassword.value) {
+            alert('Mật khẩu xác nhận không khớp. Vui lòng thử lại.');
+            confirmPassword.focus();
+            return; // Dừng hàm nếu mật khẩu không khớp
+        }
 
-        // Xử lý đăng ký thực tế ở đây (gửi dữ liệu tới server)
-        console.log("Name:", document.getElementById("name").value);
-        console.log("Email:", document.getElementById("email").value);
-        console.log("Password:", password.value);
-      }
+        // Nếu mọi thứ hợp lệ
+        alert('Đăng ký thành công! (demo)');
+        // Ở đây bạn có thể thêm code để gửi dữ liệu đến server
+        // registerForm.submit();
     });
 </script>
+
 </body>
 </html>
