@@ -2,9 +2,142 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Register</title>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+          background: #f0f2f5;
+          display: flex;
+          height: 100vh;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .container {
+          background: white;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+          width: 400px;
+        }
+
+        h1 {
+          text-align: center;
+          margin-bottom: 25px;
+          color: #333;
+        }
+
+        .input-group {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .input-field input {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          font-size: 15px;
+        }
+
+        .btn-register {
+          width: 100%;
+          padding: 12px;
+          margin-top: 20px;
+          border: none;
+          background-color: #28a745;
+          color: white;
+          font-size: 16px;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: background 0.3s ease;
+        }
+
+        .btn-register:hover {
+          background-color: #218838;
+        }
+
+        .login-link {
+          text-align: center;
+          margin-top: 15px;
+          font-size: 14px;
+        }
+
+        .login-link a {
+          color: #1877f2;
+          text-decoration: none;
+        }
+
+        .error {
+          color: red;
+          font-size: 13px;
+          display: none;
+        }
+
+        .success {
+          color: green;
+          font-size: 13px;
+          display: none;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <h1>Register</h1>
+    <form id="registerForm">
+        <div class="input-group">
+            <div class="input-field">
+                <input type="text" id="name" placeholder="Full Name" required>
+            </div>
+            <div class="input-field">
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="input-field">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <div class="input-field">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+            <div id="message" class="error">Passwords do not match!</div>
+            <div id="successMessage" class="success">Registration successful!</div>
+        </div>
+        <button type="submit" class="btn-register">Register</button>
+        <div class="login-link">
+            Already have an account? <a href="#">Login here</a>
+        </div>
+    </form>
+</div>
 
+<script>
+    const form = document.getElementById("registerForm");
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirmPassword");
+    const errorMessage = document.getElementById("message");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Ngăn gửi form
+
+      if (password.value !== confirmPassword.value) {
+        errorMessage.style.display = "block";
+        successMessage.style.display = "none";
+      } else {
+        errorMessage.style.display = "none";
+        successMessage.style.display = "block";
+
+        // Xử lý đăng ký thực tế ở đây (gửi dữ liệu tới server)
+        console.log("Name:", document.getElementById("name").value);
+        console.log("Email:", document.getElementById("email").value);
+        console.log("Password:", password.value);
+      }
+    });
+</script>
 </body>
 </html>

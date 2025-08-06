@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login & Register</title>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+          background: #f0f2f5;
+          display: flex;
+          height: 100vh;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .container {
+          background: white;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+          width: 360px;
+        }
+
+        .form-box h1 {
+          text-align: center;
+          margin-bottom: 25px;
+          color: #333;
+        }
+
+        .input-group {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .input-field input {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 6px;
+          font-size: 15px;
+        }
+
+        .input-group p {
+          font-size: 13px;
+          text-align: right;
+          margin-top: 5px;
+        }
+
+        .input-group a {
+          color: #1877f2;
+          text-decoration: none;
+        }
+
+        .btn-field {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 20px;
+        }
+
+        .btn-field button {
+          flex: 1;
+          padding: 12px;
+          margin: 0 5px;
+          border: none;
+          background-color: #1877f2;
+          color: white;
+          font-size: 16px;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: background 0.3s ease;
+        }
+
+        .btn-field button:hover {
+          background-color: #145db2;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="form-box">
+        <h1 id="title">Login</h1>
+        <form id="form">
+            <div class="input-group">
+                <div class="input-field" id="nameField" style="display: none;">
+                    <input type="text" placeholder="Name">
+                </div>
+                <div class="input-field">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="input-field">
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <p>Lost password? <a href="#">Click here!</a></p>
+            </div>
+            <div class="btn-field">
+                <button type="submit" id="signinBtn">Login</button>
+                <button type="button" id="signupBtn">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const signupBtn = document.getElementById("signupBtn");
+    const signinBtn = document.getElementById("signinBtn");
+    const nameField = document.getElementById("nameField");
+    const title = document.getElementById("title");
+
+    signupBtn.onclick = function () {
+      nameField.style.display = "block";
+      title.innerText = "Register";
+      signinBtn.type = "button";
+      signupBtn.type = "submit";
+    };
+
+    signinBtn.onclick = function () {
+      nameField.style.display = "none";
+      title.innerText = "Login";
+      signinBtn.type = "submit";
+      signupBtn.type = "button";
+    };
+</script>
+</body>
+</html>
