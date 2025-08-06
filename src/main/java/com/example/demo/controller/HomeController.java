@@ -11,6 +11,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model){
         model.addAttribute("content","home");
+
         return "layouts/main";
     }
 
@@ -49,11 +50,6 @@ public class HomeController {
         return "layouts/main";
     }
 
-    // ... và các trang khác (blog, checkout, shop-details, shopping-cart, etc.)
-//    @GetMapping("/blog")
-//    public String showBlogPage() {
-//        return "blog";
-//    }
 
     @GetMapping("/checkout")
     public String showCheckoutPage(Model model) {

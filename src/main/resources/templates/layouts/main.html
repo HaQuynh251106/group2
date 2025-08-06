@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
     <div th:replace="~{fragments/head :: head}"></div>
 </head>
-<body>
 
+<body>
 
 <div class="app-wrapper">
 
-
     <header th:replace="fragments/header :: header"></header>
-
     <main th:replace="${content}"></main>
-
     <footer th:replace="fragments/footer :: footer"></footer>
 
 </div>
 
-
 <div th:replace="~{fragments/scripts :: scripts}"></div>
-
 
 </body>
 </html>
