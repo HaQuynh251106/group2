@@ -271,7 +271,7 @@
             <button type="submit" class="login-btn">Log in</button>
         </form>
         <p class="signup-link">
-            Don't have an account? <a href="#">Sign up for free</a>
+            Don't have an account? <a th:href="@{/register}">Sign up for free</a>
         </p>
     </div>
     <div class="login-image">
@@ -342,7 +342,7 @@
     const loginForm = document.getElementById('loginForm');
     loginForm.addEventListener('submit', function(event) {
         event.preventDefault();
-        alert('Đăng nhập thành công! (demo)');
+<!--        alert('Đăng nhập thành công! (demo)');-->
     });
 </script>
 </body>

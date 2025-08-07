@@ -1,236 +1,287 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Đăng Ký</title>
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/elegant-icons.css}" type="text/css">
+
+
     <style>
-        /* Import Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap');
-
-        /* Reset và cài đặt cơ bản */
-        * {
+        body, html {
+            height: 100%;
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #f0f2f5; /* Changed background for contrast */
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #e6e8eb;
+        /* New wrapper to center the card */
+        .page-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            color: #4a4a4a;
+            padding: 5rem 1rem; /* Add padding top and bottom */
+            min-height: 100vh; /* Ensure it takes at least the screen height */
         }
 
-        /* Container chính */
-        .register-container {
+        /* This is the main card container */
+        .content-card {
             display: flex;
-            width: 900px;
-            max-width: 95vw;
-            min-height: 650px; /* Tăng chiều cao để vừa các trường mới */
-            background-color: #fff;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
+            width: 100%;
+            max-width: 900px; /* Set max width for the card */
+            background-color: #ffffff;
+            border-radius: 8px; /* Add rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            overflow: hidden; /* Important for border-radius on children */
         }
 
-        /* Phần form bên trái */
-        .register-form {
-            flex: 1;
-            padding: 50px;
+        .form-section {
+            flex-basis: 50%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
+            align-items: center;
+            padding: 40px;
         }
 
-        .register-form h1 {
+        .form-wrapper {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-wrapper h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            color: #333;
+            font-weight: 700;
+            font-size: 2.2rem;
+            color: #111111;
             text-align: center;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
-        .register-form .subtitle {
+        .form-wrapper .tagline {
+            color: #b2b2b2;
             text-align: center;
-            font-size: 13px;
-            color: #aaa;
-            letter-spacing: 0.5px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
-        /* Nút đăng ký với Google */
-        .google-register-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .google-btn {
             width: 100%;
             padding: 12px;
+            border: 1px solid #e1e1e1;
             background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s;
+            transition: background-color 0.3s;
         }
 
-        .google-register-btn:hover {
-            background-color: #f9f9f9;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        .google-btn:hover {
+            background-color: #f7f7f7;
         }
 
-        .google-register-btn svg {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-        }
-
-        /* Dấu ngăn cách "or" */
         .separator {
             display: flex;
             align-items: center;
             text-align: center;
-            color: #ccc;
+            color: #b2b2b2;
             margin: 25px 0;
-            font-size: 13px;
         }
 
         .separator::before,
         .separator::after {
             content: '';
             flex: 1;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #e1e1e1;
         }
 
         .separator:not(:empty)::before {
-            margin-right: .5em;
+            margin-right: .25em;
         }
 
         .separator:not(:empty)::after {
-            margin-left: .5em;
+            margin-left: .25em;
         }
 
-        /* Form và các trường input */
-        .main-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .form-group {
+            margin-bottom: 20px;
         }
 
-        .main-form input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .main-form input::placeholder {
-            color: #aaa;
-        }
-
-        .main-form input:focus {
-            outline: none;
-            border-color: #333;
-        }
-
-        /* Điều khoản dịch vụ */
-        .terms-agreement {
-            font-size: 12px;
-            color: #666;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 5px;
-        }
-
-        .terms-agreement input[type="checkbox"] {
-            width: 14px;
-            height: 14px;
-        }
-
-        .terms-agreement a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .terms-agreement a:hover {
-            text-decoration: underline;
-        }
-
-        /* Nút đăng ký chính */
-        .register-btn {
-            width: 100%;
-            padding: 14px;
-            background-color: #1e293b;
-            color: #fff;
+        .form-control {
+            background-color: #f5f5f5;
             border: none;
-            border-radius: 5px;
+            border-radius: 0;
+            padding: 15px;
             font-size: 15px;
-            font-weight: 500;
+        }
+        .form-control:focus {
+             background-color: #f5f5f5;
+             box-shadow: none;
+             border: 1px solid #111;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 12px;
+            background-color: #111111;
+            color: #ffffff;
+            border: none;
+            border-radius: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
             cursor: pointer;
-            margin-top: 15px;
             transition: background-color 0.3s;
         }
 
-        .register-btn:hover {
-            background-color: #334155;
+        .btn-register:hover {
+            background-color: #333;
+            color: #fff;
         }
 
-        /* Link đăng nhập */
         .login-link {
             text-align: center;
             margin-top: 25px;
-            font-size: 13px;
-            color: #666;
+            font-size: 15px;
         }
-
         .login-link a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .login-link a:hover {
+            color: #111111;
+            font-weight: 700;
             text-decoration: underline;
         }
 
-        /* Phần hình ảnh bên phải */
-        .register-image {
-            flex: 1;
-            background: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1920&auto=format&fit=crop') center center/cover;
+        .image-section {
+            flex-basis: 50%;
+            background-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
             position: relative;
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: flex-end;
+            padding: 40px;
         }
 
-        .image-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 100px;
+        .fashion-text {
+            font-size: 6rem; /* Adjusted font size for smaller container */
+            font-weight: bold;
+            color: white;
+            line-height: 1;
+            letter-spacing: 10px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        /* --- FOOTER STYLES (Unchanged) --- */
+        .footer {
+            background: #111111;
+            padding-top: 70px;
+        }
+
+        .footer__about {
+            margin-bottom: 30px;
+        }
+
+        .footer__about p {
+            font-size: 15px;
+            color: #b2b2b2;
+            line-height: 25px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer__widget {
+            margin-bottom: 30px;
+        }
+
+        .footer__widget h6 {
+            color: #ffffff;
+            font-size: 15px;
             font-weight: 700;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 40px;
             text-transform: uppercase;
-            letter-spacing: 5px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
         }
 
-        /* Responsive */
-        @media (max-width: 800px) {
-            .register-image {
-                display: none;
+        .footer__widget ul li {
+            list-style: none;
+        }
+
+        .footer__widget ul li a {
+            font-size: 15px;
+            color: #b2b2b2;
+            line-height: 36px;
+        }
+
+        .footer__newslatter {
+             margin-bottom: 30px;
+        }
+
+        .footer__newslatter p {
+            font-size: 15px;
+            color: #b2b2b2;
+            line-height: 25px;
+        }
+
+        .footer__newslatter form {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .footer__newslatter form input {
+            width: 100%;
+            height: 50px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding-left: 20px;
+            font-size: 15px;
+            color: #b2b2b2;
+        }
+        .footer__newslatter form input::placeholder {
+            color: #b2b2b2;
+        }
+
+        .footer__newslatter form button {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            background: transparent;
+            border: none;
+            padding: 0 15px;
+            color: #b2b2b2;
+            font-size: 18px;
+        }
+
+        .footer__copyright__text p {
+            color: #b2b2b2;
+            font-size: 15px;
+            margin-bottom: 0;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer__copyright__text p a {
+            color: #ca1515;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 991px) {
+            .page-wrapper {
+                padding: 2rem 1rem;
+                min-height: auto; /* Remove min-height to fit content */
             }
-            .register-form {
-                padding: 40px 30px;
+             .content-card {
+                flex-direction: column;
             }
-            .register-container {
-                min-height: auto;
+            .image-section {
+                display: none; /* Hide image on smaller screens */
             }
         }
 
@@ -238,68 +289,107 @@
 </head>
 <body>
 
-<div class="register-container">
-    <div class="register-form">
-        <h1>Create An Account</h1>
-        <p class="subtitle">Join us and discover the latest trends.</p>
+<div class="page-wrapper">
+    <div class="content-card">
+        <div class="form-section">
+            <div class="form-wrapper">
+                <h1>CREATE ACCOUNT</h1>
+                <p class="tagline">Timelessly chic and enduringly fashionable.</p>
 
-        <button class="google-register-btn">
-            <svg viewBox="0 0 48 48">
-                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
-                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.42-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6.04C45.33 39.73 48 32.74 48 24c0-.66-.05-1.31-.15-1.95l.13.4z"></path>
-                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
-                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.82l-7.73-6.04c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
-                <path fill="none" d="M0 0h48v48H0z"></path>
-            </svg>
-            Sign up with Google
-        </button>
+                <button class="google-btn">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google icon" height="20">
+                    <span>Sign up with Google</span>
+                </button>
 
-        <div class="separator">or</div>
+                <div class="separator">OR</div>
 
-        <form id="registerForm" class="main-form">
-            <input type="text" id="fullName" placeholder="Full Name" required>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <form action="#" th:action="@{/register}" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="fullName" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="quanghoa@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password" required>
+                    </div>
 
-            <label for="terms" class="terms-agreement">
-                <input type="checkbox" id="terms" required>
-                I agree to the <a href="#">Terms & Conditions</a>
-            </label>
+                    <button type="submit" class="btn btn-register">SIGN UP</button>
 
-            <button type="submit" class="register-btn">Sign Up</button>
-        </form>
+                    <div class="login-link">
+                        <span>Already have an account? <a th:href="@{/login}">Log in</a></span>
+                    </div>
+                </form>
 
-        <p class="login-link">
-            Already have an account? <a href="#">Log in</a>
-        </p>
-    </div>
-
-    <div class="register-image">
-        <span class="image-text">FASHION</span>
+            </div>
+        </div>
+        <div class="image-section">
+            <div class="fashion-text">FASHION</div>
+        </div>
     </div>
 </div>
 
-<script>
-    const registerForm = document.getElementById('registerForm');
-    const password = document.getElementById('password');
-    const confirmPassword = document.getElementById('confirmPassword');
 
-    registerForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Ngăn form gửi đi mặc định
-
-        if (password.value !== confirmPassword.value) {
-            alert('Mật khẩu xác nhận không khớp. Vui lòng thử lại.');
-            confirmPassword.focus();
-            return; // Dừng hàm nếu mật khẩu không khớp
-        }
-
-        // Nếu mọi thứ hợp lệ
-        alert('Đăng ký thành công! (demo)');
-        // Ở đây bạn có thể thêm code để gửi dữ liệu đến server
-        // registerForm.submit();
-    });
-</script>
-
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <a th:href="@{/}"><img th:src="@{/img/footer-logo.png}" alt=""></a>
+                    </div>
+                    <p>The customer is at the heart of our unique business model, which includes design.</p>
+                    <a href="#"><img th:src="@{/img/payment.png}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                <div class="footer__widget">
+                    <h6>Shopping</h6>
+                    <ul>
+                        <li><a th:href="@{/shop/clothing}">Clothing Store</a></li>
+                        <li><a th:href="@{/shop/shoes}">Trending Shoes</a></li>
+                        <li><a th:href="@{/shop/accessories}">Accessories</a></li>
+                        <li><a th:href="@{/shop/sale}">Sale</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-6">
+                <div class="footer__widget">
+                    <h6>Shopping</h6>
+                    <ul>
+                        <li><a th:href="@{/contact}">Contact Us</a></li>
+                        <li><a href="#">Payment Methods</a></li>
+                        <li><a href="#">Delivery</a></li>
+                        <li><a href="#">Return & Exchanges</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                <div class="footer__widget">
+                    <h6>NewLetter</h6>
+                    <div class="footer__newslatter">
+                        <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                        <form action="#">
+                            <input type="text" placeholder="Your email">
+                            <button type="submit"><span class="icon_mail_alt"></span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="footer__copyright__text">
+                    <p>Copyright &copy;
+                        <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}"></span> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
