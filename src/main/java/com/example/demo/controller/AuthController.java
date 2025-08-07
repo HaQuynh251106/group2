@@ -26,6 +26,13 @@ public class AuthController {
         return "auth/login";
     }
 
+    @GetMapping("register")
+    public String register(Model model){
+        model.addAttribute("content","auth/register");
+
+        return "auth/register";
+    }
+
 
 
 //    @GetMapping("/login")
