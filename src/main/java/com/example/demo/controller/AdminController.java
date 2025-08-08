@@ -24,9 +24,10 @@ public class AdminController {
 
 
     @GetMapping("/dashboard")
-    public String dashboard() {
+    public String dashboard(Model model) {
+        model.addAttribute("content","dashboard");
         // Trả về tên của file view (không cần .html)
-        return "admin/dashboard";
+        return "admin/base";
     }
 
     // --- Product CRUD ---
@@ -34,7 +35,7 @@ public class AdminController {
     @GetMapping("/products")
     public String listProducts(Model model) {
         model.addAttribute("products", productList);
-        return "admin/products/index";
+        return "admin/base";
     }
 
     @GetMapping("/products/add")

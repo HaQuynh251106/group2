@@ -5,12 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Trang Quản Trị</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+
+    <link th:href="@{/css/admin.css}" rel="stylesheet">
+
 </head>
 <body>
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
 </header>
+
+
 <div class="container-fluid">
     <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
@@ -18,17 +25,37 @@
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/admin/dashboard}">
-                            <i class="bi bi-house-door-fill"></i> Dashboard
+                            <i class="fa fa-home"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/admin/products}">
-                            <i class="bi bi-box-seam-fill"></i> Quản lý Sản phẩm
+                            <i class="fa fa-archive"></i> Quản lý Sản phẩm
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/admin/categories}">
-                            <i class="bi bi-tags-fill"></i> Quản lý Danh mục
+                            <i class="fa fa-tags"></i> Quản lý Danh mục
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/orders}">
+                            <i class="fa fa-file-text"></i> Quản lý Đơn hàng
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/user}">
+                            <i class="fa fa-users"></i> Quản lý Người dùng
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/reviews}">
+                            <i class="fa fa-star"></i> Quản lý Đánh giá
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/product-log}">
+                            <i class="fa fa-history"></i> Nhật ký Sản phẩm
                         </a>
                     </li>
                 </ul>
