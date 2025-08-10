@@ -1,32 +1,204 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Nhật ký Nhập/Xuất Sản phẩm</h1>
+<!--<!DOCTYPE html>-->
+<!--<html lang="vi" xmlns:th="http://www.thymeleaf.org">-->
+
+<!--<head th:fragment="head(title)">-->
+<!--    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--    <title th:text="${title}">Nhật kí sản phẩm</title>-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+<!--    <meta name="title" content="AdminLTE v4 | Dashboard" />-->
+<!--    <meta name="author" content="ColorlibHQ" />-->
+<!--    <base href="/"/>-->
+<!--    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">-->
+<!--    <meta name="description" content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS." />-->
+<!--    <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard" />-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous" />-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/styles/overlayscrollbars.min.css" integrity="sha256-tZHrRjVqNSRyWg2wbppGnT833E/Ys0DHWGwT04GiqQg=" crossorigin="anonymous" />-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" integrity="sha256-9kPW/n5nn53j4WMRYAxe9c1rCY96Oogo/MKSVdKzPmI=" crossorigin="anonymous" />-->
+<!--    <link rel="stylesheet" href="/css/adminlte.css" />-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous" />-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous" />-->
+<!--</head>-->
+
+
+<!--<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">-->
+<div class="app-wrapper">
+<!--    <nav class="app-header navbar navbar-expand bg-body">-->
+<!--        <div class="container-fluid">-->
+<!--            <ul class="navbar-nav">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">-->
+<!--                        <i class="bi bi-list"></i>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            <ul class="navbar-nav ms-auto">-->
+<!--                <li class="nav-item dropdown user-menu">-->
+<!--                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">-->
+
+<!--                        <span class="d-none d-md-inline">Admin</span>-->
+<!--                    </a>-->
+<!--                    <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">-->
+<!--                        <li class="user-header text-bg-primary">-->
+<!--                            <p>Admin<small>Member since Nov. 2023</small></p>-->
+<!--                        </li>-->
+<!--                        <li class="user-footer">-->
+<!--                            <a href="#" class="btn btn-default btn-flat">Profile</a>-->
+<!--                            <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--    <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">-->
+<!--        <div class="sidebar-brand">-->
+<!--            <a href="#" class="brand-link">-->
+
+<!--                <span class="brand-text fw-light">Admin Panel</span>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="sidebar-wrapper">-->
+<!--            <nav class="mt-2">-->
+<!--                <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a href="#" class="nav-link">-->
+<!--                            <i class="nav-icon bi bi-speedometer"></i>-->
+<!--                            <p>Dashboard</p>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item menu-open"> <a href="#" class="nav-link active"> <i class="nav-icon bi bi-journal-text"></i>-->
+<!--                        <p>-->
+<!--                            Quản lý Sản phẩm-->
+<!--                            <i class="nav-arrow bi bi-chevron-right"></i>-->
+<!--                        </p>-->
+<!--                    </a>-->
+<!--                        <ul class="nav nav-treeview">-->
+<!--                            <li class="nav-item">-->
+<!--                                <a href="#" class="nav-link">-->
+<!--                                    <i class="nav-icon bi bi-circle"></i>-->
+<!--                                    <p>Danh sách sản phẩm</p>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                            <li class="nav-item">-->
+<!--                                <a href="#" class="nav-link active"> <i class="nav-icon bi bi-circle-fill"></i> <p>Nhật kí sản phẩm</p>-->
+<!--                                </a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </nav>-->
+<!--        </div>-->
+<!--    </aside>-->
+
+    <main class="app-main">
+        <div class="app-content-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3 class="mb-0">Nhật kí sản phẩm</h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-end">
+                            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Nhật kí sản phẩm
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-content">
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="w-50">
+                                <div class="input-group">
+                                    <input type="search" class="form-control" placeholder="Tìm kiếm theo tên sản phẩm, hành động...">
+                                    <button class="btn btn-outline-secondary" type="button"><i class="bi bi-search"></i></button>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="btn btn-success"><i class="bi bi-file-earmark-excel"></i> Xuất Excel</button>
+                                <button class="btn btn-secondary"><i class="bi bi-funnel"></i> Bộ lọc</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Hành động</th>
+                                <th>Người thực hiện</th>
+                                <th>Thời gian</th>
+                                <th style="width: 25%">Ghi chú</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1.</td>
+                                <td>iPhone 15 Pro Max</td>
+                                <td><span class="badge text-bg-primary">Cập nhật số lượng</span></td>
+                                <td>admin@example.com</td>
+                                <td>14:30 10-08-2025</td>
+                                <td>Tăng số lượng tồn kho từ 50 lên 100.</td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>Laptop Dell XPS 15</td>
+                                <td><span class="badge text-bg-success">Thêm mới sản phẩm</span></td>
+                                <td>manager@example.com</td>
+                                <td>11:20 10-08-2025</td>
+                                <td>Nhập hàng đợt đầu.</td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td>Tai nghe Sony WH-1000XM5</td>
+                                <td><span class="badge text-bg-info">Cập nhật giá</span></td>
+                                <td>admin@example.com</td>
+                                <td>09:05 09-08-2025</td>
+                                <td>Giảm giá 10% cho chương trình khuyến mãi.</td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td>Bàn phím cơ Keychron K2</td>
+                                <td><span class="badge text-bg-danger">Xóa sản phẩm</span></td>
+                                <td>superadmin@example.com</td>
+                                <td>17:00 08-08-2025</td>
+                                <td>Sản phẩm ngừng kinh doanh.</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer clearfix">
+                        <ul class="pagination pagination-sm m-0 float-end">
+                            <li class="page-item"><a class="page-link" href="#">«</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">»</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div></div>
+    </main>
+<!--    <footer class="app-footer">-->
+<!--        <strong>Copyright &copy; 2014-2024 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>-->
+<!--        All rights reserved.-->
+<!--        <div class="float-end d-none d-sm-inline-block">-->
+<!--            <b>Version</b> 4.0.0-alpha.1-->
+<!--        </div>-->
+<!--    </footer>-->
 </div>
-<div class="table-responsive">
-    <table class="table table-striped table-sm">
-        <thead>
-        <tr>
-            <th>Thời gian</th>
-            <th>Sản phẩm</th>
-            <th>Hành động</th>
-            <th>Số lượng thay đổi</th>
-            <th>Người thực hiện</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>2025-08-08 09:30:00</td>
-            <td>SP001 - Áo Thun Cotton</td>
-            <td>Nhập kho</td>
-            <td class="text-success">+50</td>
-            <td>admin_user</td>
-        </tr>
-        <tr>
-            <td>2025-08-07 15:00:00</td>
-            <td>SP002 - Quần Jean</td>
-            <td>Xuất kho (Đơn hàng #998)</td>
-            <td class="text-danger">-1</td>
-            <td>system</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+<!--<script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-Kq7DYYk8D0oP6G2M7s2MifpD3R+xd261i+8/KT+53wA=" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>-->
+<!--<script src="/js/adminlte.js"></script>-->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js" integrity="sha256-+vh8GkaU7CknrqL4JnYGGdaOd_xX-SgtAPeVLVWOA88=" crossorigin="anonymous"></script>-->
+
+<!--</body>-->
+
+<!--</html>-->

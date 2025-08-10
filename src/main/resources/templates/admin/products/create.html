@@ -1,0 +1,261 @@
+<!--<!doctype html>-->
+<!--<html lang="vi">-->
+<!--<head>-->
+<!--    <meta charset="utf-8" />-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1" />-->
+<!--    <title>Thêm mới sản phẩm</title>-->
+<!--    &lt;!&ndash; Thêm CSS (Bootstrap / AdminLTE nếu cần) &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">-->
+<!--</head>-->
+<!--<body>-->
+<div class="app-wrapper">
+    <main class="app-main">
+        <div class="app-content-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3 class="mb-0">Thêm mới sản phẩm</h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-end">
+                            <li class="breadcrumb-item"><a href="/products/list">Sản phẩm</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Thêm mới</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-content">
+            <div class="container-fluid">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Thông tin sản phẩm</h3>
+                    </div>
+
+                    <!-- FORM: action tĩnh, name trùng với thuộc tính product nếu server cần -->
+                    <form action="/products/save" method="post" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Tên sản phẩm</label>
+                                        <input type="text" name="name" class="form-control" id="name" placeholder="Nhập tên sản phẩm" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="category" class="form-label">Danh mục</label>
+                                        <select class="form-select" id="category" name="category" required>
+                                            <option value="">-- Chọn danh mục --</option>
+                                            <!-- ví dụ tĩnh: thay bằng dữ liệu thực khi cần -->
+                                            <option value="1">Áo Sơ mi</option>
+                                            <option value="2">Quần Jean</option>
+                                            <option value="3">Áo Thun</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="price" class="form-label">Giá bán</label>
+                                        <div class="input-group">
+                                            <input type="number" name="price" class="form-control" id="price" placeholder="Ví dụ: 250000" required>
+                                            <span class="input-group-text">VNĐ</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="stock" class="form-label">Số lượng nhập kho</label>
+                                        <input type="number" name="stock" class="form-control" id="stock" placeholder="Nhập số lượng" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Mô tả chi tiết</label>
+                                <textarea name="description" class="form-control" id="description" rows="4" placeholder="Chất liệu, kiểu dáng..."></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Size có sẵn</label>
+                                        <div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="sizeS" name="sizes" value="S">
+                                                <label class="form-check-label" for="sizeS">S</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="sizeM" name="sizes" value="M">
+                                                <label class="form-check-label" for="sizeM">M</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="sizeL" name="sizes" value="L">
+                                                <label class="form-check-label" for="sizeL">L</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="sizeXL" name="sizes" value="XL">
+                                                <label class="form-check-label" for="sizeXL">XL</label>
+                                            </div>
+                                        </div>
+                                        <!-- Lưu ý: nếu muốn server nhận nhiều giá trị, đổi name="sizes" thành name="sizes[]" (tùy backend) -->
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="imageUpload" class="form-label">Ảnh sản phẩm</label>
+                                        <input class="form-control" type="file" id="imageUpload" name="imageFile" accept="image/*">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Lưu lại</button>
+                            <a href="/products/list" class="btn btn-secondary">Hủy</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Thêm JS nếu cần -->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="vi" xmlns:th="http://www.thymeleaf.org">-->
+
+<!--<head th:replace="~{fragments/layout :: head(title='Thêm mới sản phẩm')}"></head>-->
+
+<!--<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">-->
+<!--<div class="app-wrapper">-->
+<!--    <main class="app-main">-->
+<!--        <div class="app-content-header">-->
+<!--            <div class="container-fluid">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-sm-6">-->
+<!--                        <h3 class="mb-0">Thêm mới sản phẩm</h3>-->
+<!--                    </div>-->
+<!--                    <div class="col-sm-6">-->
+<!--                        <ol class="breadcrumb float-sm-end">-->
+<!--                            <li class="breadcrumb-item"><a th:href="@{/products/list}">Sản phẩm</a></li>-->
+<!--                            <li class="breadcrumb-item active" aria-current="page">Thêm mới</li>-->
+<!--                        </ol>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="app-content">-->
+<!--            <div class="container-fluid">-->
+<!--                <div class="card card-primary">-->
+<!--                    <div class="card-header">-->
+<!--                        <h3 class="card-title">Thông tin sản phẩm</h3>-->
+<!--                    </div>-->
+
+<!--                    <form th:action="@{/products/save}" th:object="${product}"   method="post" enctype="multipart/form-data">-->
+
+<!--                        <div class="card-body">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="mb-3">-->
+<!--                                        <label for="name" class="form-label">Tên sản phẩm</label>-->
+<!--                                        <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Nhập tên sản phẩm" required>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="mb-3">-->
+<!--                                        <label for="category" class="form-label">Danh mục</label>-->
+<!--                                        <select class="form-select" id="category" th:field="*{category}" required>-->
+<!--                                            <option value="">&#45;&#45; Chọn danh mục &#45;&#45;</option>-->
+<!--                                            <option th:each="cat : ${categories}" th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}">Áo Sơ mi</option>-->
+
+<!--                                            <option value="2">Quần Jean</option>-->
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <div class="row">-->
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="mb-3">-->
+<!--                                        <label for="price" class="form-label">Giá bán</label>-->
+<!--                                        <div class="input-group">-->
+<!--                                            <input type="number" class="form-control" id="price" th:field="*{price}" placeholder="Ví dụ: 250000" required>-->
+<!--                                            <span class="input-group-text">VNĐ</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="mb-3">-->
+<!--                                        <label for="stock" class="form-label">Số lượng nhập kho</label>-->
+<!--                                        <input type="number" class="form-control" id="stock" th:field="*{stock}" placeholder="Nhập số lượng" required>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <div class="mb-3">-->
+<!--                                <label for="description" class="form-label">Mô tả chi tiết</label>-->
+<!--                                <textarea class="form-control" id="description" th:field="*{description}" rows="4" placeholder="Chất liệu, kiểu dáng..."></textarea>-->
+<!--                            </div>-->
+
+<!--                            <div class="row">-->
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="mb-3">-->
+<!--                                        <label class="form-label">Size có sẵn</label>-->
+<!--                                        <div>-->
+<!--                                            <div class="form-check form-check-inline">-->
+<!--                                                <input class="form-check-input" type="checkbox" id="sizeS" value="S" th:field="*{sizes}">-->
+<!--                                                <label class="form-check-label" for="sizeS">S</label>-->
+<!--                                            </div>-->
+<!--                                            <div class="form-check form-check-inline">-->
+<!--                                                <input class="form-check-input" type="checkbox" id="sizeM" value="M" th:field="*{sizes}">-->
+<!--                                                <label class="form-check-label" for="sizeM">M</label>-->
+<!--                                            </div>-->
+<!--                                            <div class="form-check form-check-inline">-->
+<!--                                                <input class="form-check-input" type="checkbox" id="sizeL" value="L" th:field="*{sizes}">-->
+<!--                                                <label class="form-check-label" for="sizeL">L</label>-->
+<!--                                            </div>-->
+<!--                                            <div class="form-check form-check-inline">-->
+<!--                                                <input class="form-check-input" type="checkbox" id="sizeXL" value="XL" th:field="*{sizes}">-->
+<!--                                                <label class="form-check-label" for="sizeXL">XL</label>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-6">-->
+<!--                                    <div class="mb-3">-->
+<!--                                        <label for="imageUpload" class="form-label">Ảnh sản phẩm</label>-->
+<!--                                        <input class="form-control" type="file" id="imageUpload" name="imageFile">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card-footer">-->
+<!--                            <button type="submit" class="btn btn-primary">Lưu lại</button>-->
+<!--                            <a th:href="@{/products/list}" class="btn btn-secondary">Hủy</a>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </main>-->
+<!--</div>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--<script src="/js/adminlte.js"></script>-->
+<!--</body>-->
+<!--</html>-->
