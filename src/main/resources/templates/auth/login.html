@@ -260,8 +260,8 @@
         </button>
         <div class="separator">or</div>
         <form id="loginForm" class="main-form">
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Password" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
             <div class="form-options">
                 <label for="remember-me" class="remember-me">
                     <input type="checkbox" id="remember-me"> Remember me
@@ -271,7 +271,7 @@
             <button type="submit" class="login-btn">Log in</button>
         </form>
         <p class="signup-link">
-            Don't have an account? <a th:href="@{/register}">Sign up for free</a>
+            Don't have an account? <a href="/register">Sign up for free</a>
         </p>
     </div>
     <div class="login-image">
@@ -339,11 +339,10 @@
 
 
 <script>
-    const loginForm = document.getElementById('loginForm');
     loginForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-<!--        alert('Đăng nhập thành công! (demo)');-->
-    });
+       // Xử lý gì đó nếu cần
+       // Sau đó để form submit bình thường (KHÔNG dùng preventDefault)
+   });
 </script>
 </body>
 </html>

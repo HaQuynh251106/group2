@@ -1,0 +1,80 @@
+<div class="app-wrapper">
+    <main class="app-main">
+        <div class="app-content-header">
+            <div class="container-fluid">
+                <h3 class="mb-0">Tạo đơn hàng thủ công</h3>
+            </div>
+        </div>
+
+        <div class="app-content">
+            <div class="container-fluid">
+                <form action="/orders/save" method="post">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card card-primary mb-3">
+                                <div class="card-header"><h3 class="card-title">1. Thông tin khách hàng</h3></div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="customerName">Tên khách hàng</label>
+                                            <input type="text" id="customerName" name="customerName" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="customerPhone">Số điện thoại</label>
+                                            <input type="text" id="customerPhone" name="customerPhone" class="form-control" required>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <label for="shippingAddress">Địa chỉ giao hàng</label>
+                                            <textarea id="shippingAddress" name="shippingAddress" class="form-control" rows="2" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card card-info">
+                                <div class="card-header"><h3 class="card-title">2. Sản phẩm</h3></div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label>Tìm và thêm sản phẩm</label>
+                                        <div class="input-group">
+                                            <select class="form-select" id="product-search" name="productSearch">
+                                                <option value="">-- Tìm áo, quần... --</option>
+                                            </select>
+                                            <button class="btn btn-info" type="button" id="add-product-btn">Thêm vào đơn</button>
+                                        </div>
+                                        <small class="form-text text-muted">Chức năng này cần Javascript để hoạt động.</small>
+                                    </div>
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Sản phẩm</th>
+                                            <th>SL</th>
+                                            <th>Giá</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="order-items-table">
+                                        <!-- Hàng sản phẩm sẽ được thêm bằng Javascript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card card-success">
+                                <div class="card-header"><h3 class="card-title">3. Hoàn tất</h3></div>
+                                <div class="card-body">
+                                    <h5>Tổng tiền: <strong class="float-end" id="total-amount">0 đ</strong></h5>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-success w-100">Tạo đơn hàng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>

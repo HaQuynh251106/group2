@@ -19,10 +19,8 @@ public class Users {
     @Column(length = 100)
     private String email;
 
-//    @Column(length = 50)
-//    private String role;
 
-//    private Boolean active;
+
 
     // Getter và Setter
 
@@ -58,19 +56,6 @@ public class Users {
         this.email = email;
     }
 
-//    public String getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(String role) {
-//        this.role = role;
-//    }
 
-//    public Boolean getActive() {
-//        return active;
-//    }
-//
-//    public void setActive(Boolean active) {
-//        this.active = active;
-//    }
+
 }

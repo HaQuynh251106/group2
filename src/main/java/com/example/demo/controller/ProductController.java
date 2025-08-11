@@ -58,6 +58,6 @@ public class ProductController {
     public String deleteStudent(@PathVariable Long id) {
         Products s = productRepository.findById(id).orElseThrow();
         productRepository.delete(s);
-        return "redirect:/students";
+        return "redirect:/products";
     }
 }

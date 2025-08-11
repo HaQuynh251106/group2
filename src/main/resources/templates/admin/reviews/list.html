@@ -1,0 +1,78 @@
+
+<div class="wrapper">
+    <!-- Nội dung chính -->
+    <main class="app-main">
+        <div class="app-content-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3 class="mb-0">Quản lý đánh giá</h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-end">
+                            <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Đánh giá</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="app-content">
+            <div class="container-fluid">
+                <!-- Bảng danh sách đánh giá -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Danh sách đánh giá sản phẩm</h3>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Sản phẩm</th>
+                                <th>Người dùng</th>
+                                <th>Điểm</th>
+                                <th>Nội dung</th>
+                                <th>Ngày đánh giá</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Áo Thun Nam</td>
+                                <td>Nguyễn Văn A</td>
+                                <td>5 ★</td>
+                                <td>Chất vải rất tốt, form đẹp.</td>
+                                <td>2025-08-10</td>
+                                <td><span class="badge bg-success">Hiển thị</span></td>
+                                <td>
+                                    <a href="/reviews/edit/1" class="btn btn-sm btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="/reviews/delete/1" class="btn btn-sm btn-danger" onclick="return confirm('Xóa đánh giá này?');"><i class="bi bi-trash"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Quần Jean Nữ</td>
+                                <td>Trần Thị B</td>
+                                <td>4 ★</td>
+                                <td>Vải dày, nhưng giao hàng hơi chậm.</td>
+                                <td>2025-08-09</td>
+                                <td><span class="badge bg-secondary">Ẩn</span></td>
+                                <td>
+                                    <a href="/reviews/edit/2" class="btn btn-sm btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="/reviews/delete/2" class="btn btn-sm btn-danger" onclick="return confirm('Xóa đánh giá này?');"><i class="bi bi-trash"></i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+

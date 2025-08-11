@@ -1,0 +1,91 @@
+<div class="app-wrapper">
+    <main class="app-main">
+        <div class="app-content-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3 class="mb-0">Quản lý Đơn hàng</h3>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-end">
+                            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Đơn hàng</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-content">
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="input-group" style="width: auto; flex-grow: 1; max-width: 400px;">
+                                <input type="search" class="form-control" placeholder="Tìm theo mã đơn, tên khách hàng...">
+                                <button class="btn btn-outline-secondary" type="button"><i class="bi bi-search"></i></button>
+                            </div>
+                            <div class="mt-2 mt-md-0">
+                                <a href="orders-create.html" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Tạo đơn thủ công</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>Mã Đơn</th>
+                                <th>Khách hàng</th>
+                                <th>Ngày đặt</th>
+                                <th>Tổng tiền</th>
+                                <th>Thanh toán</th>
+                                <th>Trạng thái</th>
+                                <th style="width: 100px;">Chức năng</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><strong>#HD20250810</strong></td>
+                                <td>Nguyễn Văn An</td>
+                                <td>10-08-2025 22:30</td>
+                                <td>550,000 đ</td>
+                                <td><span class="badge text-bg-success">Đã thanh toán</span></td>
+                                <td><span class="badge text-bg-info">Đang giao hàng</span></td>
+                                <td>
+                                    <a href="orders-edit.html" class="btn btn-info btn-sm" title="Xem chi tiết">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-sm" title="Hủy đơn"><i class="bi bi-x-circle"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>#HD20250809</strong></td>
+                                <td>Trần Thị Bích</td>
+                                <td>09-08-2025 14:00</td>
+                                <td>350,000 đ</td>
+                                <td><span class="badge text-bg-success">Đã thanh toán</span></td>
+                                <td><span class="badge text-bg-success">Đã giao</span></td>
+                                <td>
+                                    <a href="#" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
+                                    <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>#HD20250808</strong></td>
+                                <td>Lê Minh Cường</td>
+                                <td>08-08-2025 09:15</td>
+                                <td>890,000 đ</td>
+                                <td><span class="badge text-bg-warning">Chưa thanh toán</span></td>
+                                <td><span class="badge text-bg-secondary">Đã hủy</span></td>
+                                <td>
+                                    <a href="#" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
+                                    <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

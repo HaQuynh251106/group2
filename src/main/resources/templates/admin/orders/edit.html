@@ -1,0 +1,98 @@
+<div class="app-wrapper">
+    <main class="app-main">
+        <div class="app-content-header">
+            <div class="container-fluid">
+                <h3 class="mb-0">Chi tiết đơn hàng: #HD20250810</h3>
+            </div>
+        </div>
+
+        <div class="app-content">
+            <div class="container-fluid">
+                <form action="/orders/update/1" method="post">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h3 class="card-title">Các sản phẩm trong đơn</h3>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Sản phẩm</th>
+                                            <th>Size</th>
+                                            <th>Số lượng</th>
+                                            <th>Đơn giá</th>
+                                            <th>Thành tiền</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Áo Sơ Mi Trắng Form Rộng</td>
+                                            <td>M</td>
+                                            <td>2</td>
+                                            <td>250,000 đ</td>
+                                            <td>500,000 đ</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Quần Jean Baggy Xanh Nhạt</td>
+                                            <td>L</td>
+                                            <td>1</td>
+                                            <td>350,000 đ</td>
+                                            <td>350,000 đ</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Thông tin khách hàng</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Tên:</strong> Nguyễn Văn An</p>
+                                    <p><strong>Số điện thoại:</strong> 0987654321</p>
+                                    <p><strong>Địa chỉ giao hàng:</strong> 123 Đường ABC, Phường XYZ, Quận 1, TP. Hồ Chí Minh</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Cập nhật trạng thái</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label for="shippingStatus" class="form-label">Trạng thái đơn hàng</label>
+                                        <select id="shippingStatus" class="form-select" name="shippingStatus">
+                                            <option value="PENDING">Chờ xác nhận</option>
+                                            <option value="PROCESSING">Đang xử lý</option>
+                                            <option value="SHIPPING">Đang giao hàng</option>
+                                            <option value="DELIVERED">Đã giao</option>
+                                            <option value="CANCELLED">Đã hủy</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="paymentStatus" class="form-label">Trạng thái thanh toán</label>
+                                        <select id="paymentStatus" class="form-select" name="paymentStatus">
+                                            <option value="UNPAID">Chưa thanh toán</option>
+                                            <option value="PAID">Đã thanh toán</option>
+                                        </select>
+                                    </div>
+                                    <hr>
+                                    <h5>Tổng cộng: <strong class="float-end">850,000 đ</strong></h5>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-warning w-100">Cập nhật đơn hàng</button>
+                                    <a href="/orders/list" class="btn btn-secondary w-100 mt-2">Quay lại danh sách</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>

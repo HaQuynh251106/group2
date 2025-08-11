@@ -303,16 +303,40 @@
 
                 <div class="separator">OR</div>
 
-                <form action="#" th:action="@{/register}" method="post">
+<!--                <form action="/register"  method="post">-->
+<!--                    <div class="form-group">-->
+<!--                        <input type="text" class="form-control" name="fullName" placeholder="Full Name" required>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <input type="email" class="form-control" name="email" placeholder="quanghoa@gmail.com" required>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <input type="password" class="form-control" name="password" placeholder="Password" required>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password" required>-->
+<!--                    </div>-->
+
+<!--                    <button type="submit" class="btn btn-register">SIGN UP</button>-->
+
+<!--                    <div class="login-link">-->
+<!--                        <span>Already have an account? <a th:href="@{/login}">Log in</a></span>-->
+<!--                    </div>-->
+<!--                </form>-->
+
+                <form action="/register" method="post">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="fullName" placeholder="Full Name" required>
+                        <input type="text" class="form-control" name="username" placeholder="Username" required>
                     </div>
+
                     <div class="form-group">
                         <input type="email" class="form-control" name="email" placeholder="quanghoa@gmail.com" required>
                     </div>
+
                     <div class="form-group">
                         <input type="password" class="form-control" name="password" placeholder="Password" required>
                     </div>
+
                     <div class="form-group">
                         <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password" required>
                     </div>
@@ -323,6 +347,7 @@
                         <span>Already have an account? <a th:href="@{/login}">Log in</a></span>
                     </div>
                 </form>
+
 
             </div>
         </div>
